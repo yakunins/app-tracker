@@ -19,5 +19,5 @@
         "bodyPrefix": "Apps running found:<br/>",
         "bodySuffix": "<br/>__________<br/>App Tracker"
     },
-    "debug": true
+    "debug": false
 }
