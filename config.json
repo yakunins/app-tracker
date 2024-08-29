@@ -1,10 +1,10 @@
 {
     "remoteConfig": "13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA",
-    "apps": ["roblox", "tiktok"],
+    "apps": ["roblox", "youtube"],
     "checkPeriodSeconds": 10,
     "alertLimitSeconds": 3600,
     "alertOnUserExit": false,
-    "trayIcon": "eye",
+    "trayIcon": "transparent",
     "smtp": {
         "username": "app4tracker@gmail.com",
         "password": "",

@@ -15,12 +15,12 @@ SetTitleMatchMode "RegEx"
 ; remoteConfig > localConfig > config
 global config := {
 	localConfig: "./config.json",
-	remoteConfig: "", ; google doc id or url, see example https://docs.google.com/spreadsheets/d/13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA
+	remoteConfig: "", ; google doc id or url, see https://docs.google.com/spreadsheets/d/13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA
 	apps: ["test"], ; array of apps to detect, e.g. substring of window title ("roblox") or full process name ("photoshop.exe") (string with comma as separator)
-	checkPeriodSeconds: 5, ; period between scans for apps running
-	alertLimitSeconds: 60 * 60 * 2, ; minimum time period between alerts to avoid spamming
+	checkPeriodSeconds: 20, ; (20 seconds) interval between scans for apps running
+	alertLimitSeconds: 60 * 60 * 3, ; (3 hours) minimum interval between two alerts, to prevent spamming
 	alertOnUserExit: false, ; if true, send special email on user to close app tracker
-	trayIcon: "transparent", ; one of "bell", "eye", "shield", "transparent"
+	trayIcon: "transparent", ; one of "bell", "eye", "shield", "transparent" or path to local file ("./ico/radar.ico")
 	smtp: { ; smtp account to send email alert
 		username: "test@test.com",
 		password: "" ; create app password https://security.google.com/settings/security/apppasswords
@@ -51,8 +51,8 @@ RunAppTracker() {
 		MsgBox "config + localConfig + remoteConfig: `r`n" Jsons.Dump(config, 4)
 
 	SetTimer CheckAppsRunning, 1000 * config.checkPeriodSeconds ; main routine
-	UseBase64TrayIcon(config.trayIcon)
 	RemoveTrayTooltip()
+	SetTrayIcon(config.trayIcon)
 	OnExit HandleExit
 }
 
@@ -116,6 +116,15 @@ HandleExit(ExitReason, ExitCode) {
 			_email.body := "User explicitly closed app tracker.<br/><br/>" . config.email.bodySuffix
 			SendEmail(config.smtp, _email, config.debug)
 		}
+	}
+}
+
+SetTrayIcon(nameOrPath) {
+	if (InStr(nameOrPath, ".")) {
+		if FileExist(nameOrPath)
+			TraySetIcon(nameOrPath)
+	} else {
+		UseBase64TrayIcon(config.trayIcon)
 	}
 }
 

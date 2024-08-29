@@ -1,16 +1,20 @@
-# App Tracker
-AHK script to track for app launch and secretly notify over email. Useful for parents or employers.
+# App Launch Tracker
+
+AHK v2 script to secretly monitor and report app launches via email.  
+Useful for parents or employers.
 
 ## Installation (for Gmail user)
-1. download compiled version [`app-tracker.exe`](app-tracker.exe), [`config.json`](config.json) and [`install.cmd`](install.cmd)
-2. [create app password](https://security.google.com/settings/security/apppasswords) for [smtp](https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol#Outgoing_mail_SMTP_server) account to allow sending alerts ([2-step verification is required](https://support.google.com/accounts/answer/185839))
-3. provide smtp.username and smtp.password to `config.json`
-4. (on tracked PC) run `install.cmd` to create `app-tracker-shortcut.lnk` at startup folder 
 
-## Configuration via `config.json`
-- see props description at the begining of [`app-tracker.ahk`](app-tracker.ahk)
-- remote configuration, just point `remoteConfig: ...` to your copy of [this spreadsheet](https://docs.google.com/spreadsheets/d/13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA)
-- couple of embedded tray icons available
+1. **Download:** [`app-tracker.exe`](app-tracker.exe) (compiled version), [`config.json`](config.json) and [`install.cmd`](install.cmd)
+2. **Allow email sending:** [enable 2-Step Verification](https://support.google.com/accounts/answer/185839) for your Gmail account and [generate an App Password](https://security.google.com/settings/security/apppasswords)
+3. **Configure:** Update `smtp.username` and `smtp.password` in `config.json` with your Gmail credentials and App Password
+4. **Install:** Run `install.cmd` on the tracked PC to create shortcut at startup folder
 
-Cheers!
+## Configuration options
 
+-   refer to the comments in [`app-tracker.ahk`](app-tracker.ahk#L16) for detailed property descriptions
+-   **`apps`:** list of apps to detect, such as those containing the substring 'roblox' in their window title or the full process name 'photoshop.exe'
+-   **`remoteConfig`:** remote configuration, point to **your own copy** of [this spreadsheet](https://docs.google.com/spreadsheets/d/13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA)
+-   **`trayIcon`:** couple of embedded tray icons available (bell, eye, shield)
+
+Enjoy :)
