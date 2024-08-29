@@ -1,13 +1,17 @@
 #Requires AutoHotkey v2.0
 
-; request google spreadsheet as an csv, parse first two columns, return object
+; request google spreadsheet in csv format, parse first two columns, return object
+; resource must be url or googleDocId
 FetchGoogleSpreadsheet(resource, attempts := 3, period := 5000, debug := false) {
 	prefix := "https://docs.google.com/spreadsheets/d/"
 	suffix := "/export?format=csv"
 	e := false
 
-	if (InStr(resource, "http")) {
-		csvUrl := resource
+	if (InStr(resource, "http") and InStr(resource, "spreadsheets")) {
+		googleId := ExtractGoogleDocId(resource)
+		if !googleId
+			return {}
+		csvUrl := prefix . googleId . suffix
 	} else {
 		csvUrl := prefix . resource . suffix
 	}
@@ -114,4 +118,18 @@ Enquote(str) {
 
 Dequote(str) {
 	return StrReplace(str, '%22', '"')
+}
+
+ExtractGoogleDocId(url) {
+	; googleDocId.length === 44
+	parts := StrSplit(url, ["/", "//", ".", "#", "?", "="])
+	result := 0
+	Loop parts.Length {
+		p := parts[A_Index]
+		if StrLen(p) >= 43 and StrLen(p) <= 45 {
+			result := p
+			break
+		}
+	}
+	return result
 }

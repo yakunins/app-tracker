@@ -1,5 +1,6 @@
 {
     "remoteConfig": "13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA",
+    "_url_or_googledocid_see_example_at": "https://docs.google.com/spreadsheets/d/13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA",
     "apps": ["roblox", "youtube"],
     "checkPeriodSeconds": 10,
     "alertLimitSeconds": 3600,
@@ -18,5 +19,5 @@
         "bodyPrefix": "Apps running found:<br/>",
         "bodySuffix": "<br/>__________<br/>App Tracker"
     },
-    "debug": false
+    "debug": true
 }

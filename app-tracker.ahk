@@ -15,7 +15,7 @@ SetTitleMatchMode "RegEx"
 ; remoteConfig > localConfig > config
 global config := {
 	localConfig: "./config.json",
-	remoteConfig: "", ; google doc id or url, see https://docs.google.com/spreadsheets/d/13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA
+	remoteConfig: "", ; googleDocId or url, see https://docs.google.com/spreadsheets/d/13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA
 	apps: ["test"], ; array of apps to detect, e.g. substring of window title ("roblox") or full process name ("photoshop.exe") (string with comma as separator)
 	checkPeriodSeconds: 20, ; (20 seconds) interval between scans for apps running
 	alertLimitSeconds: 60 * 60 * 3, ; (3 hours) minimum interval between two alerts, to prevent spamming
@@ -29,21 +29,21 @@ global config := {
 		from: "App Spy <test@test.com>", ; must be same as smtp.username
 		to: "Tester <test1@test.com>, test2@test.com",
 		subj: "email.subj",
-		bodyPrefix: "email.body.prefix<br/>", ; html acceptable
+		bodyPrefix: "email.body.prefix<br/>", ; html is acceptable
 		bodySuffix: "email.body.suffix<br/>"
 	},
-	debug: false ; don't override it in remoteConfig' spreadsheet
+	debug: false
 }
 
-config := MergeObjects(config, ReadJson(config.localConfig)) ; append local config
+config := MergeObjects(config, ReadJson(config.localConfig)) ; local config to take pecedence
 
 if (config.HasOwnProp("remoteConfig")) {
-	config := MergeObjects(config, FetchGoogleSpreadsheet(config.remoteConfig,,,config.debug)) ; append remote config
+	config := MergeObjects(config, FetchGoogleSpreadsheet(config.remoteConfig,,,config.debug)) ; remote config to take pecedence
 }
 
 global s := {} ; global storage of script' state
 s.appsFound := ""
-s.secondsSinceAlert := config.alertLimitSeconds * 2 ; init as more than limit
+s.secondsSinceAlert := config.alertLimitSeconds + 1 ; init as if limit has been passed
 
 RunAppTracker() ; main routine
 RunAppTracker() {
