@@ -1,0 +1,22 @@
+{
+    "remoteConfig": "13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA",
+    "apps": ["roblox", "tiktok"],
+    "checkPeriodSeconds": 10,
+    "alertLimitSeconds": 3600,
+    "alertOnUserExit": false,
+    "trayIcon": "eye",
+    "smtp": {
+        "username": "app4tracker@gmail.com",
+        "password": "",
+        "server": "smtp.gmail.com",
+        "port": 587
+    },
+    "email": {
+        "from": "App Tracker <app4tracker@gmail.com>",
+        "to": "Tester <tester1@test.com>, tester2@test.com",
+        "subj": "App is running.",
+        "bodyPrefix": "Apps running found:<br/>",
+        "bodySuffix": "<br/>__________<br/>App Tracker"
+    },
+    "debug": true
+}
