@@ -6,7 +6,7 @@ Useful for parents or employers.
 ## Installation (for Gmail users)
 
 1. **Download:** [`app-tracker.exe`](app-tracker.exe) (compiled version), [`config.json`](config.json) and [`install.cmd`](install.cmd)
-2. **Get email sending credentials:** [enable 2-Step Verification](https://support.google.com/accounts/answer/185839) for your Gmail account and [generate an App Password](https://security.google.com/settings/security/apppasswords)
+2. **Get email sending credentials:** [enable 2-Step Verification](https://support.google.com/accounts/answer/185839) + [generate an App Password](https://security.google.com/settings/security/apppasswords)
 3. **Configure:** Update `smtp.username` and `smtp.password` in `config.json` with your Gmail credentials and App Password, update `email.to` with the recipients you want to notify
 4. **Install:** Run `install.cmd` on the tracked PC to create shortcut at startup folder
 

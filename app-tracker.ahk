@@ -12,9 +12,8 @@
 
 SetTitleMatchMode "RegEx"
 
-; remoteConfig > localConfig > config
 global config := {
-	localConfig: "./config.json",
+	localConfig: "./config.json", ; remoteConfig > localConfig > config
 	remoteConfig: "", ; googleDocId or url, see https://docs.google.com/spreadsheets/d/13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA
 	apps: ["test"], ; array of apps to detect, e.g. substring of window title ("roblox") or full process name ("photoshop.exe") (string with comma as separator)
 	checkPeriodSeconds: 20, ; (20 seconds) interval between scans for apps running
