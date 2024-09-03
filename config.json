@@ -1,11 +1,11 @@
 {
-    "remoteConfig": "13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA",
-    "_url_or_googledocid_see_example_at": "https://docs.google.com/spreadsheets/d/13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA",
+    "remoteConfig": "",
+    "_remote_config_to_be_url_or_googledocid_see_example_at": "https://docs.google.com/spreadsheets/d/13uh9TW2axb28s9i2lOH9ShnHjEdAqKyGZayvVwDs1CA",
     "apps": ["roblox", "youtube"],
     "checkPeriodSeconds": 10,
     "alertLimitSeconds": 3600,
     "alertOnUserExit": false,
-    "trayIcon": "transparent",
+    "trayIcon": "eye",
     "smtp": {
         "username": "app4tracker@gmail.com",
         "password": "",

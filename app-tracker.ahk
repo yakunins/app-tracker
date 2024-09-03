@@ -25,7 +25,7 @@ global config := {
 		password: "" ; create app password https://security.google.com/settings/security/apppasswords
 	},
 	email: { ; alert' email settings
-		from: "App Spy <test@test.com>", ; must be same as smtp.username
+		from: "App Spy <test@test.com>", ; address must be the same as smtp.username
 		to: "Tester <test1@test.com>, test2@test.com",
 		subj: "email.subj",
 		bodyPrefix: "email.body.prefix<br/>", ; html is acceptable
